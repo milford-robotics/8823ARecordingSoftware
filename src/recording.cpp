@@ -39,7 +39,7 @@ int playBack(std::string fileName,std::vector<vex::motor> motors){
         return 1;
     }
 
-    int num=0;
+    float num=0;
     while(true){
         
         for(vex::motor Motor:motors){
@@ -81,15 +81,15 @@ int recordTo(std::string fileName, std::vector<vex::motor> motors){
         outFile.open(fileName, std::ios_base::app );
         for(vex::motor Motor:motors){
 
-            int command=Motor.voltage();
+            float command=Motor.voltage();
 
             outFile << command << " ";
         }
 
         outFile << std::endl;
 
-        vex::task::sleep(100);
         outFile.close();
+        vex::task::sleep(100);
     }
     return 0;
 }
